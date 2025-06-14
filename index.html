@@ -8,6 +8,16 @@
 </head>
 <body>
   <h1 class="title">Valorant Agent Cards</h1>
+  <div class="theme-toggle">
+  <input type="checkbox" id="themeSwitch" hidden />
+  <label for="themeSwitch" class="toggle-label">
+    <span class="icon sun"></span>
+    <span class="toggle-slider"></span>
+    <span class="icon moon"></span>
+  </label>
+</div>
+
+
   <div class="grid-container">
 
     <div class="card">
@@ -47,5 +57,21 @@
     </div>
 
   </div>
+  <script>
+  const toggle = document.getElementById('themeSwitch');
+  const body = document.body;
+
+  // Load saved theme
+  if (localStorage.getItem('theme') === 'light') {
+    body.classList.add('light-mode');
+    toggle.checked = true;
+  }
+
+  toggle.addEventListener('change', () => {
+    body.classList.toggle('light-mode');
+    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+</script>
+
 </body>
 </html>
